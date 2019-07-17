@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">NBA Info</string>
+    <string name="splash">Splash</string>
+    <string name="todo">Img</string>
+    <string name="team_name">Team Name</string>
+    <string name="team_description">Team Description</string>
+    <string name="img">TODO</string>
+    <string name="dummytext">DummyText</string>
+    <string name="img2">TODO</string>
+    <string name="img3">TODO</string>
+    <string name="back">Back</string>
+    <string name="team">Team</string>
+    <string name="this_team_has_done_x_y_and_z_over_the_last_couple_years_and_has_continued_to_dominate_the_season">This team has done x y and z over the last couple years and has continued to dominate the season.</string>
+    <string name="title_activity_detail_l2">DetailL2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
