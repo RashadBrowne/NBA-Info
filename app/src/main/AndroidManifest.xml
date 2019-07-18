@@ -12,16 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme.NoABar">
         <activity
-            android:name=".DetailL2Activity"
-            android:label="@string/title_activity_detail_l2"></activity>
-        <activity
-            android:name=".DetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/CustomAppTheme" />
-        <activity
             android:name=".Splash"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -30,6 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomAppTheme" />
+        <activity
+            android:name=".DetailsActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
     </application>
 
 </manifest>

@@ -29,6 +29,15 @@ public class DetailsActivity extends YouTubeBaseActivity {
         setContentView(R.layout.activity_details);
         Log.d(TAG, "onCreate: Detail Started");
 
+        /*
+        //restoring state pt1
+        if (savedInstanceState != null) {// if the state isnt empty restore it
+            mCounter = savedInstanceState.getInt(STATE_COUNTER, 0);
+
+        }
+        */
+
+
 
         //Youtube api shit
         //Button playbtn = (Button) findViewById(R.id.playvid);
@@ -116,4 +125,22 @@ public class DetailsActivity extends YouTubeBaseActivity {
         });
     }
 
+
+/*
+    //restoring state pt2
+    private int mCounter;
+    private static final String STATE_COUNTER = "obj";
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(STATE_COUNTER, mCounter);
+    }
+
+    @Override
+    protected void onRestoreInstanceState (Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        mCounter = savedInstanceState.getParcelable(STATE_COUNTER);
+    }
+
+*/
 }
