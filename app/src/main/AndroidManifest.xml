@@ -22,9 +22,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/CustomAppTheme" />
+            android:theme="@style/CustomAppTheme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DetailsActivity"
+            android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
     </application>
 
