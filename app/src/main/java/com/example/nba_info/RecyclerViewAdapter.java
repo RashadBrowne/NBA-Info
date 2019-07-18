@@ -18,6 +18,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
+    //Loads the Arrays for storing data to accept the data from the main activity
     private ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mImageDesc = new ArrayList<>();
     private ArrayList<String> mImages = new ArrayList<>();
@@ -43,9 +44,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
+        //Load the details on the main page
         Glide.with(mContext).asBitmap().load(mImages.get(position)).into(holder.image);
         holder.imageName.setText(mImageNames.get(position));
 
+
+        //Send over the data to the details page so it could display it
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +71,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
+
+        //Set the locations for the layouts
         ImageView image;
         TextView imageName;
         ConstraintLayout parentLayout;

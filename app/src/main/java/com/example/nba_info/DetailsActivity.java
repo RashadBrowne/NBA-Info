@@ -16,10 +16,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class DetailsActivity extends YouTubeBaseActivity {
 
     private static final String TAG = "DetailsActivity";
-
-
-    String Link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    private String YoutubeAPIKey = "AIzaSyCJvC9glzmX1cp_1DdocZdHwsXDPAwIknwkey";
+    private String YoutubeAPIKey = "AIzaSyCJvC9glzmX1cp_1DdocZdHwsXDPAwIknwkey";// Needed to use the api
     YouTubePlayerView Vidview;
     YouTubePlayer.OnInitializedListener listener;
 
@@ -35,7 +32,7 @@ public class DetailsActivity extends YouTubeBaseActivity {
 
 
     private void getIncomingIntent() {
-        //Get incoming data from the main activity
+        //Get incoming data from the main activity and make sure it has the required fields
         Log.d(TAG, "getIncomingIntent: checking for incoming intent");
         if (getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")) {
             Log.d(TAG, "getIncomingIntent: found intent extras");

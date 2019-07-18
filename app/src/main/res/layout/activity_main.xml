@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Splash">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/heroimg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/RLayout"
