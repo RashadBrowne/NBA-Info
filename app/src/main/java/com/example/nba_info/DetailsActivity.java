@@ -29,50 +29,13 @@ public class DetailsActivity extends YouTubeBaseActivity {
         setContentView(R.layout.activity_details);
         Log.d(TAG, "onCreate: Detail Started");
 
-        /*
-        //restoring state pt1
-        if (savedInstanceState != null) {// if the state isnt empty restore it
-            mCounter = savedInstanceState.getInt(STATE_COUNTER, 0);
-
-        }
-        */
-
-
-
-        //Youtube api shit
-        //Button playbtn = (Button) findViewById(R.id.playvid);
-        //Vidview = findViewById(R.id.Video);
-
-
         //Load info from recycler view
         getIncomingIntent();
-
-        /*
-        listener = new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("iQ7zFGJryIY");
-                Log.d(TAG, "onInitializationSuccess: player");
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Log.d(TAG, "onInitializationFailure: Failed Loading Vids");
-            }
-        };
-
-        playbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: Loading vid");
-                Vidview.initialize(YoutubeAPIKey, listener);
-            }
-        });
-        */
     }
 
 
     private void getIncomingIntent() {
+        //Get incoming data from the main activity
         Log.d(TAG, "getIncomingIntent: checking for incoming intent");
         if (getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")) {
             Log.d(TAG, "getIncomingIntent: found intent extras");
@@ -89,20 +52,22 @@ public class DetailsActivity extends YouTubeBaseActivity {
 
 
     private void setInfo(String imageUrl, String imageName, String imageDesc, final String link) {
+        //Insert the Data into the Layout
         Log.d(TAG, "instance initializer: setting the information");
         TextView name = findViewById(R.id.team_name);
         TextView desc = findViewById(R.id.team_desc);
         name.setText(imageName);
         desc.setText(imageDesc);
-
         ImageView image = findViewById(R.id.TeamIMG);
         Glide.with(this).asBitmap().load(imageUrl).into(image);
-        //Vidview.loadVideo(link);
+
+        //The only way to load a video using the youtube api
+        final Button playbtn = (Button) findViewById(R.id.playvid);
+        //
 
 
-        Button playbtn = (Button) findViewById(R.id.playvid);
+        //Load the youtube video
         Vidview = findViewById(R.id.Video);
-
         listener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
@@ -116,31 +81,16 @@ public class DetailsActivity extends YouTubeBaseActivity {
             }
         };
 
+
+        //Set a listening to the button so it actually does something aka activate the youtube video
         playbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: Loading vid");
                 Vidview.initialize(YoutubeAPIKey, listener);
+                playbtn.setVisibility(playbtn.INVISIBLE);//Hide the button after pressing it
             }
         });
     }
 
-
-/*
-    //restoring state pt2
-    private int mCounter;
-    private static final String STATE_COUNTER = "obj";
-    @Override
-    protected void onSaveInstanceState (Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(STATE_COUNTER, mCounter);
-    }
-
-    @Override
-    protected void onRestoreInstanceState (Bundle savedInstanceState){
-        super.onRestoreInstanceState(savedInstanceState);
-        mCounter = savedInstanceState.getParcelable(STATE_COUNTER);
-    }
-
-*/
 }
