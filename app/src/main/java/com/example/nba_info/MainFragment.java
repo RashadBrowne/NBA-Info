@@ -24,7 +24,7 @@ public class MainFragment extends Fragment {
     private ArrayList<String> mImageDesc = new ArrayList<>();
     private ArrayList<String> mLinks = new ArrayList<>();
 
-    private View ContactsView;
+    private View RecyclerViewM;
     private RecyclerView recyclerView;
 
     public MainFragment(){
@@ -34,30 +34,28 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ContactsView = inflater.inflate(R.layout.mainfragment,container, false);
+        RecyclerViewM = inflater.inflate(R.layout.mainfragment,container, false);
         //Inflate the layout for the fragment
 
         initImageBitmaps();
-        recyclerView = (RecyclerView) ContactsView.findViewById(R.id.recycler_view);
+
+        recyclerView = (RecyclerView) RecyclerViewM.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
-
-        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+        recyclerView.setItemViewCacheSize(20);
+        //Keep all the items in cache so it only runs onbindviewholder once instead of when an item is retrieved from offscreen
+        //ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         //Using the nested scroll view solves the scrolling problems presented by the regular scroll view
         //you could use "recyclerView.setNestedScrollingEnabled(false);" in the nested scroll view but it cuts off content
-
-        //Send over the information to the recycler view
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls, mImageDesc, mLinks);
+        //Send over the information to the recycler view
+        recyclerView.setHasFixedSize(true);
+        //Since everything has a standard height
         recyclerView.setAdapter(adapter);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-
-
-
-        return ContactsView;
+        return RecyclerViewM;
     }
 
     @Override
