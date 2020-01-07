@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:translationZ="@dimen/cardview_compat_inset_shadow"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

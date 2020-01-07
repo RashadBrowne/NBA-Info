@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".DetailsActivity">
 
     <ImageView
@@ -11,9 +12,9 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:contentDescription="@string/img2"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +66,9 @@
         android:id="@+id/playvid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Highlights"
+        android:background="@drawable/custom_button"
+        android:text="@string/play_highlights"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/Video"
         app:layout_constraintEnd_toEndOf="@+id/Video"
         app:layout_constraintStart_toStartOf="@+id/Video"

@@ -3,15 +3,14 @@
     <!-- Base application theme. -->
     <style name="CustomAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#18f</item>
-        <item name="colorPrimaryDark">#14a</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <style name="CustomAppTheme.NoABar">
-        <item name="android:statusBarColor">#eee</item>
-        <item name="android:navigationBarColor">#14a</item>
+        <item name="android:statusBarColor">#fff</item>
     </style>
 </resources>
