@@ -38,5 +38,4 @@ public class MainActivity extends AppCompatActivity {
     *It's more than likely to do with my image that I used being oversized and the way I dealt with it but skim.
     *The older way never failed so set that to 500ms.
     */
-
 }
