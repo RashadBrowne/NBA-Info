@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,36 +36,25 @@ public class MainFragment extends Fragment {
         RecyclerViewM = inflater.inflate(R.layout.mainfragment,container, false);
         //Inflate the layout for the fragment
 
-        initImageBitmaps();
+        LoadRecyclerViewContent();
 
-        recyclerView = (RecyclerView) RecyclerViewM.findViewById(R.id.recycler_view);
+        recyclerView = RecyclerViewM.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         recyclerView.setItemViewCacheSize(20);
         //Keep all the items in cache so it only runs onbindviewholder once instead of when an item is retrieved from offscreen
-        //ViewCompat.setNestedScrollingEnabled(recyclerView, false);
-        //Using the nested scroll view solves the scrolling problems presented by the regular scroll view
-        //you could use "recyclerView.setNestedScrollingEnabled(false);" in the nested scroll view but it cuts off content
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls, mImageDesc, mLinks);
         //Send over the information to the recycler view
         recyclerView.setHasFixedSize(true);
         //Since everything has a standard height
         recyclerView.setAdapter(adapter);
 
-
         return RecyclerViewM;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-
-    }
-
-    private void initImageBitmaps() {
-        Log.d(TAG, "initImageBitmaps: preparing images");
+    private void LoadRecyclerViewContent() {
+        Log.d(TAG, "LoadRecyclerViewContent: preparing images");
 
         //Load everything for the recycler view
         mImageUrls.add("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/bos.png");
@@ -123,24 +111,5 @@ public class MainFragment extends Fragment {
         mNames.add("Chicago Bulls");
         mImageDesc.add("The Chicago Bulls are an American professional basketball team based in Chicago, Illinois. The Bulls compete in the National Basketball Association (NBA) as a member of the league's Eastern Conference Central Division. The team was founded on January 16, 1966. The team plays its home games at the United Center, an arena shared with the Chicago Blackhawks of the National Hockey League (NHL).");
         mLinks.add("yuurly9eZRI");
-
-        /*initRecyclerView();
-    }
-
-    private void initRecyclerView(){
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
-        //Using the nested scroll view solves the scrolling problems presented by the regular scroll view
-        //you could use "recyclerView.setNestedScrollingEnabled(false);" in the nested scroll view but it cuts off content
-
-        //Send over the information to the recycler view
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mImageDesc, mLinks);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-
-    }
-    */
     }
 }
