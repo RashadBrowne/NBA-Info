@@ -26,16 +26,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    /*
-    Design Doc
-    * I did have a line in to stop the scrolling from being glitchy (cutting off content and moving slow) but the fragment implementation fixed that.
-    *This change dropped cpu usage while scrolling from ~60-65% to a maximum of 27.
-
-    *Converted the heroimg into a webp and this removed all the speed problems on the main activity.
-    *Note webp's are only supported api 18 and up aka not a problem.
-
-    *Memory usage when up from 50mb avg after the load settles that one time to 100mb. avg.
-    */
-
 }

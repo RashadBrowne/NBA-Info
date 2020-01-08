@@ -38,19 +38,31 @@ public class MainFragment extends Fragment {
         //Inflate the layout for the fragment
 
         initImageBitmaps();
-        //Put in the images and names for each item
+
         recyclerView = (RecyclerView) RecyclerViewM.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         recyclerView.setItemViewCacheSize(20);
         //Keep all the items in cache so it only runs onbindviewholder once instead of when an item is retrieved from offscreen
+        //ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+        //Using the nested scroll view solves the scrolling problems presented by the regular scroll view
+        //you could use "recyclerView.setNestedScrollingEnabled(false);" in the nested scroll view but it cuts off content
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls, mImageDesc, mLinks);
         //Send over the information to the recycler view
         recyclerView.setHasFixedSize(true);
         //Since everything has a standard height
         recyclerView.setAdapter(adapter);
 
+
         return RecyclerViewM;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
     }
 
     private void initImageBitmaps() {
@@ -111,5 +123,24 @@ public class MainFragment extends Fragment {
         mNames.add("Chicago Bulls");
         mImageDesc.add("The Chicago Bulls are an American professional basketball team based in Chicago, Illinois. The Bulls compete in the National Basketball Association (NBA) as a member of the league's Eastern Conference Central Division. The team was founded on January 16, 1966. The team plays its home games at the United Center, an arena shared with the Chicago Blackhawks of the National Hockey League (NHL).");
         mLinks.add("yuurly9eZRI");
+
+        /*initRecyclerView();
+    }
+
+    private void initRecyclerView(){
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+        //Using the nested scroll view solves the scrolling problems presented by the regular scroll view
+        //you could use "recyclerView.setNestedScrollingEnabled(false);" in the nested scroll view but it cuts off content
+
+        //Send over the information to the recycler view
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls, mImageDesc, mLinks);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+    }
+    */
     }
 }

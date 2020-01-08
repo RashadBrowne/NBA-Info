@@ -13,4 +13,5 @@
     <style name="CustomAppTheme.NoABar">
         <item name="android:statusBarColor">#fff</item>
     </style>
+
 </resources>
