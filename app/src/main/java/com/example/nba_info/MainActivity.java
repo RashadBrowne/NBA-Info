@@ -29,7 +29,7 @@ Design Doc
     *Stuff I forgot to mention, recyclerview caches all the items, to reduce calling onbindviewholder.
     *With this the recyclerview doesn't bash memory and cpu on scrolling.
 
-    *Converted the heroimg into a webp and this removed all the speed problems on the main activity.
+    *Converted the hero image into a webp and this removed all the speed problems on the main activity.
     *Note webp's are only supported api 18 and up aka not a problem.
 
     *Memory usage when up from 50mb avg after the load settles that one time to 100mb. avg.
@@ -38,7 +38,7 @@ Design Doc
     *Ram usages went up to 120mb max and cpu dropped to 15% avg. It just scrolls smoother barely noticeable but very satisfying.
     *"Energy" usage went down from high-medium to straight up low
 
-    *Hardware acceleration was disabled for the splashscreen cause that was causing a harsh transistion upon loading the main activity.
+    *Hardware acceleration was disabled for the splashscreen cause that was causing a harsh transition upon loading the main activity.
 
 
 Tips
