@@ -7,14 +7,14 @@
     android:background="#FFFFFF"
     android:scrollbarThumbHorizontal="@color/ic_launcher_background"
     android:visibility="visible"
-    tools:context=".Splash">
+    tools:context=".SplashscreenActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150sp"
         android:layout_height="300sp"
         android:layout_marginTop="64dp"
-        android:background="@drawable/nbalogotransparent"
+        android:background="@drawable/splashscreenimage"
         android:contentDescription="@string/splash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +23,8 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:indeterminate="false"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

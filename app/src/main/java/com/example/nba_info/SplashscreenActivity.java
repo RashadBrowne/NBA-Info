@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class Splash extends AppCompatActivity {
+public class SplashscreenActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 800;
 
     @Override
@@ -16,7 +16,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(Splash.this, MainActivity.class);
+                Intent homeIntent = new Intent(SplashscreenActivity.this, MainActivity.class);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(homeIntent);
                 finish();

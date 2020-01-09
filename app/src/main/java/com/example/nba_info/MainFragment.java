@@ -5,10 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,18 +26,18 @@ public class MainFragment extends Fragment {
     private RecyclerView recyclerView;
 
     public MainFragment(){
-        //required public constructor apparently
+        //Required public constructor for it to be called in other activities
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RecyclerViewM = inflater.inflate(R.layout.mainfragment,container, false);
+        RecyclerViewM = inflater.inflate(R.layout.main_fragment,container, false);
         //Inflate the layout for the fragment
 
         initImageBitmaps();
         //Put in the images and names for each item
-        recyclerView = (RecyclerView) RecyclerViewM.findViewById(R.id.recycler_view);
+        recyclerView = RecyclerViewM.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         recyclerView.setItemViewCacheSize(20);

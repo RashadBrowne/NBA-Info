@@ -1,18 +1,10 @@
 package com.example.nba_info;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
-import android.util.Log;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "MainActivity";
     private MainFragment fragmentMain;
 
     @Override
@@ -20,17 +12,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentMain= new MainFragment();
-
+        fragmentMain= new MainFragment();//Innit the fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragmentMain).commit();
+        //Swap it into the FrameLayout with the id container
     }
+}
 
 
 
-    /*
-    Design Doc
+
+/*
+Design Doc
     * I did have a line in to stop the scrolling from being glitchy (cutting off content and moving slow) but the fragment implementation fixed that.
     *This change dropped cpu usage while scrolling from ~60-65% to a maximum of 27.
+
+    *Stuff I forgot to mention, recyclerview caches all the items, to reduce calling onbindviewholder.
+    *With this the recyclerview doesn't bash memory and cpu on scrolling.
 
     *Converted the heroimg into a webp and this removed all the speed problems on the main activity.
     *Note webp's are only supported api 18 and up aka not a problem.
@@ -41,7 +38,16 @@ public class MainActivity extends AppCompatActivity {
     *Ram usages went up to 120mb max and cpu dropped to 15% avg. It just scrolls smoother barely noticeable but very satisfying.
     *"Energy" usage went down from high-medium to straight up low
 
-    *Stuff I forgot to mention, recyclerview caches all the items
-    */
+    *Hardware acceleration was disabled for the splashscreen cause that was causing a harsh transistion upon loading the main activity.
 
-}
+
+Tips
+    *Keep the view-group that onbindviewholder() would be calling to simplified state as complex layouts slow down this function.
+    **Text views can slow down the recycler views.
+
+    *Fragment xml thingy crashes the app. Use FrameLayoust instead
+
+
+Questions
+    *Could I pass everything to a fragment on the start in the same way as a class?
+*/

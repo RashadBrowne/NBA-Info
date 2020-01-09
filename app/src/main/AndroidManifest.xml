@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme.NoABar">
         <activity
-            android:name=".Splash"
+            android:name=".SplashscreenActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait">
             <intent-filter>
