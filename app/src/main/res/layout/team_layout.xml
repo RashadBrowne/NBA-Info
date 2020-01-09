@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:translationZ="@dimen/cardview_compat_inset_shadow"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="0dp">
+    android:background="#26FFFFFF"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:translationZ="1dp"
+    app:cardCornerRadius="@dimen/corner_radius"
+    app:cardElevation="0dp"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#26FFFFFF"
         android:padding="15dp">
 
         <ImageView
@@ -36,8 +39,10 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-condensed-light"
             android:text="@string/dummytext"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.046"

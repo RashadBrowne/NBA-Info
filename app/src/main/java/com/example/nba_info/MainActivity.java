@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     *Note webp's are only supported api 18 and up aka not a problem.
 
     *Memory usage when up from 50mb avg after the load settles that one time to 100mb. avg.
+
+    *Hardware acceleration was enabled for the entire app.
+    *Ram usages went up to 120mb max and cpu dropped to 15% avg. It just scrolls smoother barely noticeable but very satisfying.
+    *"Energy" usage went down from high-medium to straight up low
+
+    *Stuff I forgot to mention, recyclerview caches all the items
     */
 
 }
