@@ -100,14 +100,14 @@ public class MainFragment extends Fragment {
         mImageDesc.add("The New York Knickerbockers, more commonly referred to as the Knicks, are an American professional basketball team based in the New York City borough of Manhattan. The Knicks compete in the National Basketball Association (NBA) as a member of the Atlantic Division of the Eastern Conference. The team plays its home games at Madison Square Garden, an arena they share with the New York Rangers of the National Hockey League (NHL). They are one of two NBA teams located in New York City; the other is the Brooklyn Nets. Alongside the Boston Celtics, the Knicks are one of two original NBA teams still located in its original city.");
         mLinks.add("8rncU5eS90E");
 
-        mImageUrls.add("https://www.caddocountry.net/wp-content/uploads/2018/12/houston_rockets-300x300.png");
-        mNames.add("Rockets");
-        mImageDesc.add("The Houston Rockets are an American professional basketball team based in Houston, Texas. The Rockets compete in the National Basketball Association (NBA) as a member of the league's Western Conference Southwest Division. The team plays its home games at the Toyota Center, located in downtown Houston. The Rockets have won two NBA championships and four Western Conference titles. The team was established in 1967 as the San Diego Rockets, an expansion team originally based in San Diego. In 1971, the Rockets moved to Houston.");
-        mLinks.add("N6qj1qakVN4");
-
         mImageUrls.add("https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Chicago_Bulls_logo.svg/200px-Chicago_Bulls_logo.svg.png");
         mNames.add("Chicago Bulls");
         mImageDesc.add("The Chicago Bulls are an American professional basketball team based in Chicago, Illinois. The Bulls compete in the National Basketball Association (NBA) as a member of the league's Eastern Conference Central Division. The team was founded on January 16, 1966. The team plays its home games at the United Center, an arena shared with the Chicago Blackhawks of the National Hockey League (NHL).");
         mLinks.add("yuurly9eZRI");
+
+        mImageUrls.add("https://www.caddocountry.net/wp-content/uploads/2018/12/houston_rockets-300x300.png");
+        mNames.add("Rockets");
+        mImageDesc.add("The Houston Rockets are an American professional basketball team based in Houston, Texas. The Rockets compete in the National Basketball Association (NBA) as a member of the league's Western Conference Southwest Division. The team plays its home games at the Toyota Center, located in downtown Houston. The Rockets have won two NBA championships and four Western Conference titles. The team was established in 1967 as the San Diego Rockets, an expansion team originally based in San Diego. In 1971, the Rockets moved to Houston.");
+        mLinks.add("N6qj1qakVN4");
     }
 }
