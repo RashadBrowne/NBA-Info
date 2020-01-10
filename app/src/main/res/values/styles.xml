@@ -11,6 +11,6 @@
     </style>
 
     <style name="CustomAppTheme.NoABar">
-        <item name="android:statusBarColor">#fff</item>
+        <item name="android:statusBarColor">@color/background</item>
     </style>
 </resources>

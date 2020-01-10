@@ -25,13 +25,10 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Details.NoABar"
-            android:screenOrientation="portrait" />
+            android:configChanges="keyboardHidden|screenSize" />
         <activity
             android:name=".DetailsActivity"
-            android:theme="@style/Details.NoABar"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
+            android:configChanges="keyboardHidden|screenSize"/>
     </application>
 
 </manifest>

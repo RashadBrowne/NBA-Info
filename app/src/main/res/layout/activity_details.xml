@@ -69,6 +69,7 @@
         android:background="@drawable/custom_button"
         android:text="@string/play_highlights"
         android:textAllCaps="false"
+        android:textColor="@color/text"
         app:layout_constraintBottom_toBottomOf="@+id/Video"
         app:layout_constraintEnd_toEndOf="@+id/Video"
         app:layout_constraintStart_toStartOf="@+id/Video"
