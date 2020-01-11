@@ -1,18 +1,12 @@
 package com.example.nba_info;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.transition.Slide;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.widget.ImageView;
-
 import java.util.ArrayList;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,17 +25,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initImageBitmaps();
-
-        if (savedInstanceState == null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            fragmentMain = new MainFragment(mImageUrls, mNames);//Innit the fragment
-            ft.add(R.id.container, fragmentMain).commit();
-            //Swap it into the FrameLayout with the id container
-        }
-        else {
-            initImageBitmaps();
-        }
+        //initImageBitmaps();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        fragmentMain = new MainFragment(mImageUrls, mNames);//Innit the fragment
+        ft.add(R.id.container, fragmentMain).commit();
+        //Swap it into the FrameLayout with the id container
+        Log.d("hey", "onCreate: 1");
     }
 
     public void SwitchToDetailFragment(int position){
@@ -49,14 +38,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentDetail.setExitTransition(new Slide(Gravity.LEFT));
         fragmentDetail.setEnterTransition(new Slide(Gravity.RIGHT));
 
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container, fragmentDetail).addToBackStack(null).commit();
+        Log.d("hey", "onCreate: 4");
     }
 
     private void initImageBitmaps() {
-        Log.d(TAG, "initImageBitmaps: preparing images");
-
         //Load everything for the recycler view
         mImageUrls.add("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/bos.png");
         mNames.add("Boston Celtics");
@@ -112,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         mNames.add("Rockets");
         mImageDesc.add("The Houston Rockets are an American professional basketball team based in Houston, Texas. The Rockets compete in the National Basketball Association (NBA) as a member of the league's Western Conference Southwest Division. The team plays its home games at the Toyota Center, located in downtown Houston. The Rockets have won two NBA championships and four Western Conference titles. The team was established in 1967 as the San Diego Rockets, an expansion team originally based in San Diego. In 1971, the Rockets moved to Houston.");
         mLinks.add("N6qj1qakVN4");
+        Log.d("hey", "onCreate: 5");
     }
 }
 

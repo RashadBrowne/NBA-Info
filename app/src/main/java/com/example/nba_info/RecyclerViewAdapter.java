@@ -32,12 +32,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_layout,parent, false);
         ViewHolder holder = new ViewHolder(view);
+        Log.d("hey3", "onCreate: 2");
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called.");
+        Log.d("hey3", "onCreate: 3");
 
         //Load the details on the main page
         Glide.with(mContext).asBitmap().load(mImages.get(position)).into(holder.image);
@@ -54,6 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
+        Log.d("hey3", "onCreate: 1" + mImageNames.size());
         return mImageNames.size();
     }
 
