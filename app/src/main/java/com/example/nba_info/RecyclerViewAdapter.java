@@ -20,17 +20,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     //Loads the Arrays for storing data to accept the data from the main activity
     private ArrayList<String> mImageNames;
-    private ArrayList<String> mImageDesc;
     private ArrayList<String> mImages;
-    private ArrayList<String> mLinks;
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images, ArrayList<String> imageDesc, ArrayList<String> links) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images) {
         this.mImageNames = imageNames;
         this.mImages = images;
-        this.mImageDesc = imageDesc;
         this.mContext = context;
-        this.mLinks = links;
     }
 
     @Override
@@ -52,13 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on:" + mImageNames.get(position));
-                Intent intent = new Intent(mContext, DetailsActivity.class);
-                intent.putExtra("image_url", mImages.get(position));
-                intent.putExtra("image_name", mImageNames.get(position));
-                intent.putExtra("image_desc", mImageDesc.get(position));
-                intent.putExtra("link", mLinks.get(position));
-                mContext.startActivity(intent);
+                switchFragments(position);
             }
         });
     }
@@ -78,6 +68,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             image = itemView.findViewById(R.id.image);
             imageName = itemView.findViewById(R.id.image_name);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+        }
+    }
+
+    //Fragments
+    public void switchFragments(int position){
+        if (mContext == null){return;}
+
+        if (mContext instanceof MainActivity){
+            MainActivity mainActivity = (MainActivity) mContext;
+            mainActivity.SwitchToDetailFragment(position);
         }
     }
 }
