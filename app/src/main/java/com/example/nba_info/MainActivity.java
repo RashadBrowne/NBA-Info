@@ -1,10 +1,14 @@
 package com.example.nba_info;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.transition.Slide;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -28,20 +32,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initImageBitmaps();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        fragmentMain= new MainFragment(mImageUrls, mNames);//Innit the fragment
-        ft.add(R.id.container, fragmentMain).commit();
-        //Swap it into the FrameLayout with the id container
+
+        if (savedInstanceState == null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            fragmentMain = new MainFragment(mImageUrls, mNames);//Innit the fragment
+            ft.add(R.id.container, fragmentMain).commit();
+            //Swap it into the FrameLayout with the id container
+        }
+        else {
+            initImageBitmaps();
+        }
     }
 
     public void SwitchToDetailFragment(int position){
         fragmentDetail= new DetailFragment(mImageUrls.get(position) , mNames.get(position), mImageDesc.get(position), mLinks.get(position));//Innit the fragment
+        fragmentDetail.setExitTransition(new Slide(Gravity.LEFT));
+        fragmentDetail.setEnterTransition(new Slide(Gravity.RIGHT));
+
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.animator.slide_left_enter,
-                R.animator.slide_left_exit,
-                R.animator.slide_right_enter,
-                R.animator.slide_right_exit);
         ft.replace(R.id.container, fragmentDetail).addToBackStack(null).commit();
     }
 
@@ -130,7 +139,7 @@ Design Doc:
     *"cardUseCompatPadding" solved this.
 
     *Fully switched to both activties being fragments. The youtube is still a bitch, it now crashes when nightmode activates or when it rotates in the detail activty.
-    *Its a mess at this pointgit
+    *Its a mess at this point. Also screw the youtube api.
     *But at least we have transitions between the fragments. Yeah they don't come with em naturally. #UseYaOwn!
     *And yes you need four animations for it to work.
 
@@ -140,5 +149,10 @@ Tips:
 
     *Fragment xml thingy crashes the app. Use FrameLayout instead
 
-    *I pass everything to a fragment on the start in the same way as a class?
+    *I can pass everything to a fragment on the start in the same way as a class
+
+Sources:
+    https://github.com/mikescamell/shared-element-transitions
+
+
 */

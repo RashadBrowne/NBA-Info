@@ -1,20 +1,20 @@
 package com.example.nba_info;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.transition.TransitionInflater;
 
 import com.bumptech.glide.Glide;
-import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
@@ -46,6 +46,25 @@ public class DetailFragment extends Fragment {
         return mActivity;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        postponeEnterTransition();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setSharedElementEnterTransition(TransitionInflater.from(getContext()).inflateTransition(android.R.transition.move));
+        }
+    }
+
+
+  /*  @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ImageView imageView = view.findViewById(R.id.Image_B);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            imageView.setTransitionName("transition_name");
+        }
+    }*/
 
     //MyActivity
     private void setInfo(String imageUrl, String imageName, String imageDesc, final String link) {
@@ -55,14 +74,14 @@ public class DetailFragment extends Fragment {
         TextView desc = mActivity.findViewById(R.id.team_desc);
         name.setText(imageName);
         desc.setText(imageDesc);
-        ImageView image = mActivity.findViewById(R.id.TeamIMG);
+        ImageView image = mActivity.findViewById(R.id.Image_B);
         Glide.with(this).asBitmap().load(imageUrl).into(image);
-
-        //The only way to load a video using the youtube api
-        final Button playbtn = (Button) mActivity.findViewById(R.id.playvid);
 
 
         /*
+        //The only way to load a video using the youtube api
+        final Button playbtn = (Button) mActivity.findViewById(R.id.playvid);
+
         //Load the youtube video
         Vidview = mActivity.findViewById(R.id.Video);
         listener = new YouTubePlayer.OnInitializedListener() {
@@ -88,5 +107,4 @@ public class DetailFragment extends Fragment {
             }
         });*/
     }
-
 }
