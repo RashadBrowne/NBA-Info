@@ -1,5 +1,7 @@
 package com.example.nba_info;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -16,12 +19,7 @@ public class MainFragment extends Fragment {
 
     private View RecyclerViewM;
     private RecyclerView recyclerView;
-
-    private ArrayList<String> ImageNames;
-    private ArrayList<String> ImageUrls;
-
-
-
+    SendInfoListener sendInfo;//Create an instance of my interface listener
 
     //Arrays to hold data for the recycler view
     private ArrayList<String> mNames = new ArrayList<>();
@@ -29,20 +27,34 @@ public class MainFragment extends Fragment {
     private ArrayList<String> mImageDesc = new ArrayList<>();
     private ArrayList<String> mLinks = new ArrayList<>();
 
-    public MainFragment(){
-        //Required public constructor for it to be called in other activities
+
+    //Fragment interface
+    public interface SendInfoListener {
+        void onInfoSent(String Url, String Name, String Desc, String Link);
     }
 
-    public MainFragment(ArrayList<String> images, ArrayList<String> imageNames){//Main constructor
-        ImageNames = imageNames;
-        ImageUrls = images;
-        Log.d("hey2", "onCreate: " + ImageNames.size());
+    @Override
+    public void onAttach(Context context) {//Make sure it uses the implementation or crash
+        super.onAttach(context);
+        Activity activty = (Activity) context;
+
+        try {
+            sendInfo = (SendInfoListener) activty;
+        }
+        catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().toString() + "doesn't have the listener implementation");
+        }
+    }
+
+    //Regular Fragment Stuff
+    public MainFragment(){
+        //Required public constructor for it to be called in other activities and after a config change
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         RecyclerViewM = inflater.inflate(R.layout.main_fragment,container, false);
-        //Inflate the layout for the fragment
+        //Inflate the layout for the fragment, this way we can attach items to views without calling "onViewCreated"
 
         recyclerView = RecyclerViewM.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -50,17 +62,13 @@ public class MainFragment extends Fragment {
         initImageBitmaps();
         recyclerView.setItemViewCacheSize(20);
         //Keep all the items in cache so it only runs onbindviewholder once instead of when an item is retrieved from offscreen
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls);
-        //Send over the information to the recycler view
-        recyclerView.setHasFixedSize(true);
-        //Since everything has a standard height
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls);//Innit the recyclerview
+        recyclerView.setHasFixedSize(true);//Since everything has a standard height
         recyclerView.setAdapter(adapter);
-        Log.d("hey2", "onCreate: 1");
-
         return RecyclerViewM;
     }
 
-
+    //My code
     private void initImageBitmaps() {
         //Load everything for the recycler view
         mImageUrls.add("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/bos.png");

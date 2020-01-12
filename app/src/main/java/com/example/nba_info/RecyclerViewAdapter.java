@@ -2,6 +2,7 @@ package com.example.nba_info;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Slide;
+
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
@@ -78,7 +82,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if (mContext instanceof MainActivity){
             MainActivity mainActivity = (MainActivity) mContext;
-            mainActivity.SwitchToDetailFragment(position);
+            mainActivity.onInfoSent(mImages.get(position) , mImageNames.get(position), mImages.get(position) , mImageNames.get(position));
         }
     }
 }

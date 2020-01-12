@@ -15,7 +15,6 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 public class DetailFragment extends Fragment {
     private View mActivity;
-    private static final String TAG = "DetailsActivity";
     private String YoutubeAPIKey = "AIzaSyCJvC9glzmX1cp_1DdocZdHwsXDPAwIknwkey";// Needed to use the api
     YouTubePlayerView Vidview;
     YouTubePlayer.OnInitializedListener listener;
@@ -25,9 +24,10 @@ public class DetailFragment extends Fragment {
     String Desc;
     String Link;
 
-    public interface DetailInterface{
-        void RecieveInfo()
+    public DetailFragment(){
+        //Needed for resettting the fragment on a configuration change
     }
+
 
     public DetailFragment(String imageUrl, String name, String desc, String videoLink){
         ImageUrl = imageUrl;
@@ -47,7 +47,6 @@ public class DetailFragment extends Fragment {
     //MyActivity
     private void setInfo(String imageUrl, String imageName, String imageDesc, final String link) {
         //Insert the Data into the Layout
-        Log.d(TAG, "instance initializer: setting the information");
         TextView name = mActivity.findViewById(R.id.team_name);
         TextView desc = mActivity.findViewById(R.id.team_desc);
         name.setText(imageName);
