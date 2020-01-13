@@ -44,6 +44,30 @@ public class DetailFragment extends Fragment {
         return mActivity;
     }
 
+    //Saving the data on config change
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {//Save variables before resetting
+            savedInstanceState.putString("Url", ImageUrl);
+            savedInstanceState.putString("Name", Name);
+            savedInstanceState.putString("Desc", Desc);
+            savedInstanceState.putString("Link", Link);
+        }
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {//Get variables
+            ImageUrl = savedInstanceState.getString("Url");
+            Name = savedInstanceState.getString("Name");
+            Desc = savedInstanceState.getString("Desc");
+            Link = savedInstanceState.getString("Link");
+            setInfo(ImageUrl, Name, Desc, Link);
+        }
+    }
+
     //MyActivity
     private void setInfo(String imageUrl, String imageName, String imageDesc, final String link) {
         //Insert the Data into the Layout

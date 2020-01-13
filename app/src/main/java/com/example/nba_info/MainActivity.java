@@ -6,7 +6,6 @@ import androidx.transition.Slide;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements MainFragment.SendInfoListener {
@@ -21,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
         if (savedInstanceState == null) {//Don't reset if the activity already started
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             fragmentMain = new MainFragment();//Innit the fragment
+            fragmentMain.setExitTransition(new Slide(Gravity.LEFT));
+            fragmentMain.setEnterTransition(new Slide(Gravity.RIGHT));
             ft.add(R.id.container, fragmentMain).commit();
             //Swap it into the FrameLayout with the id container
             Log.d("hey", "onCreate: 1");
@@ -82,6 +83,4 @@ Tips:
 
 Sources:
     https://github.com/mikescamell/shared-element-transitions
-
-
 */

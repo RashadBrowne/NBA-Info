@@ -62,7 +62,7 @@ public class MainFragment extends Fragment {
         initImageBitmaps();
         recyclerView.setItemViewCacheSize(20);
         //Keep all the items in cache so it only runs onbindviewholder once instead of when an item is retrieved from offscreen
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls);//Innit the recyclerview
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls, mImageDesc, mLinks);//Innit the recyclerview
         recyclerView.setHasFixedSize(true);//Since everything has a standard height
         recyclerView.setAdapter(adapter);
         return RecyclerViewM;

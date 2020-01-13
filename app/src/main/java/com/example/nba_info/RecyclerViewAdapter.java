@@ -24,11 +24,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     //Loads the Arrays for storing data to accept the data from the main activity
     private ArrayList<String> mImageNames;
     private ArrayList<String> mImages;
+    private ArrayList<String> mDescs;
+    private ArrayList<String> mLinks;
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images, ArrayList<String> desc, ArrayList<String> link) {
         this.mImageNames = imageNames;
         this.mImages = images;
+        this.mDescs = desc;
+        this.mLinks = link;
         this.mContext = context;
     }
 
@@ -82,7 +86,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if (mContext instanceof MainActivity){
             MainActivity mainActivity = (MainActivity) mContext;
-            mainActivity.onInfoSent(mImages.get(position) , mImageNames.get(position), mImages.get(position) , mImageNames.get(position));
+            mainActivity.onInfoSent(mImages.get(position) , mImageNames.get(position), mDescs.get(position) , mLinks.get(position));
         }
     }
 }
