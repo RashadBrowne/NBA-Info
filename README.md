@@ -35,5 +35,4 @@ An android application that displays the information and descriptions on a coupl
     *I can pass everything to a fragment on the start in the same way as a class though not recommended.
 
 ## Sources:
-    https://github.com/mikescamell/shared-element-transitions - automatic!
     [GitHub](https://github.com/mikescamell/shared-element-transitions)
