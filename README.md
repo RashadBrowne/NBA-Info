@@ -37,3 +37,4 @@ An android application that displays the information and descriptions on a coupl
 
 ## Sources:
     https://github.com/mikescamell/shared-element-transitions
+    [GitHub](https://github.com/mikescamell/shared-element-transitions)
