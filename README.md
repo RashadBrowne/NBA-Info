@@ -5,8 +5,8 @@ An android application that displays the information and descriptions on a coupl
 ⋅⋅* I did have a line in to stop the scrolling from being glitchy (cutting off content and moving slow) but the fragment implementation fixed that. Cause the Recyclerview didn't like being in a scrollview and would end up cropping the bottle set of items. Somehow fragmentation solved this and dropped cpu usage while scrolling from ~60-65% to a maximum of 27%.
 ⋅⋅* The Recyclerview is set to cache(20 when we have 11) all the items, to reduce calling onbindviewholder which drops performance when called. With this change the recyclerview doesn't bash memory and cpu on scrolling.
 
-    ..*Converted the hero image into a webp and this removed all the speed problems on the main activity.
-    ..*Note: webp's are only supported api 18 and up aka not a problem since the minimum we support is api 21 / Android os.
+⋅⋅⋅ Converted the hero image into a webp and this removed all the speed problems on the main activity.
+⋅⋅* Note: webp's are only supported api 18 and up aka not a problem since the minimum we support is api 21 / Android os.
 
     ..*Memory usage when up from 50mb avg after the load settles that one time to 100mb average.
 
