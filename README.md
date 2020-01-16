@@ -48,6 +48,7 @@ And yes you need four animations for it to work.
 
 **Recyclerview Optimizations**
 [Restoring recyclerview positions (though not necessary)](https://stackoverflow.com/questions/36568168/how-to-save-scroll-position-of-recyclerview-in-android/36569778)
+[Improving scrolling](https://stackoverflow.com/questions/27188536/recyclerview-scrolling-performance)
 
 **Fragments**
 
