@@ -36,4 +36,19 @@ And yes you need four animations for it to work.
 - I can pass everything to a fragment on the start in the same way as a class though not recommended.
 
 ## Sources:
+**Shared Element Transisions**
 [Mike Scamell's Github](https://github.com/mikescamell/shared-element-transitions)
+
+
+**Saved Instance on Config Change**
+[Coding Flow](https://codinginflow.com/tutorials/android/restore-variables-on-configuration-change)
+
+
+**Recyclerview Optimizations**
+
+
+**Fragments**
+
+
+**Misc**
+
