@@ -37,6 +37,19 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+        }
+
+        else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+        }
+    }
+
+    @Override
     public void onInfoSent(String Url, String Name, String Desc, String Link) {
         fragmentDetail= new DetailFragment(Url , Name, Desc, Link);//Innit the fragment
         fragmentDetail.setExitTransition(new Slide(Gravity.LEFT));
@@ -48,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
 
         else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container2, fragmentDetail).addToBackStack(null).commit();
+            ft.replace(R.id.container2, fragmentDetail).commit();
             Log.d("hey", "onCreate: 3");
         }
     }
