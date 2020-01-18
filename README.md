@@ -60,11 +60,13 @@ And yes you need four animations for it to work.
 
 [RetainInstance](https://www.androiddesignpatterns.com/2013/04/retaining-objects-across-config-changes.html)
 
+[Passing a bundle](https://stackoverflow.com/questions/17063378/how-to-pass-bundle-from-fragment-to-fragment/17063584#17063584)
+
 ---
 
 **Recyclerview Optimizations**
 
-[Restoring recyclerview positions (though not necessary)](https://stackoverflow.com/questions/36568168/how-to-save-scroll-position-of-recyclerview-in-android/36569778)
+[Restoring recyclerview scroll position (though not necessary)](https://stackoverflow.com/questions/36568168/how-to-save-scroll-position-of-recyclerview-in-android/36569778)
 
 [Improving scrolling](https://stackoverflow.com/questions/27188536/recyclerview-scrolling-performance)
 
