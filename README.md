@@ -47,11 +47,13 @@ And yes you need four animations for it to work.
 
 ## Sources:
 **Shared Element Transisions**
+
 [Mike Scamell's Github](https://github.com/mikescamell/shared-element-transitions)
 
 ---
 
 **Saved Instance on Config Change**
+
 [Coding Flow](https://codinginflow.com/tutorials/android/restore-variables-on-configuration-change)
 
 [CoderWall](https://coderwall.com/p/ujapga/persisting-data-between-configurations-changes-fragments)
@@ -61,6 +63,7 @@ And yes you need four animations for it to work.
 ---
 
 **Recyclerview Optimizations**
+
 [Restoring recyclerview positions (though not necessary)](https://stackoverflow.com/questions/36568168/how-to-save-scroll-position-of-recyclerview-in-android/36569778)
 
 [Improving scrolling](https://stackoverflow.com/questions/27188536/recyclerview-scrolling-performance)
@@ -76,4 +79,5 @@ And yes you need four animations for it to work.
 ---
 
 **Misc**
+
 [Cardview Glitch](https://stackoverflow.com/questions/56747314/cardview-corneredges-display-with-dark-color-how-to-resolve-this/56747390#56747390)
