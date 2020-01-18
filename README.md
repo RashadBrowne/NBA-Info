@@ -1,7 +1,7 @@
 # NBA-Info
 An android application that displays the information and descriptions on a couple NBA teams along with an embedded youtube video.
 
-## Design Doc:
+## Changelog:
 - I did have a line in to stop the scrolling from being glitchy (cutting off content and moving slow) but the fragment implementation fixed that. Cause the Recyclerview didn't like being in a scrollview and would end up cropping the bottle set of items. Somehow fragmentation solved this and dropped cpu usage while scrolling from ~60-65% to a maximum of 27%.
 
 - The Recyclerview is set to cache(20 when we have 11) all the items, to reduce calling onbindviewholder which drops performance when called. With this change the recyclerview doesn't bash memory and cpu on scrolling.
@@ -16,15 +16,25 @@ Note: webp's are only supported api 18 and up aka not a problem since the minimu
 - Ram usages went up to 120mb max and cpu dropped to 15% avg. It just scrolls smoother barely noticeable but very satisfying.
 "Energy" usage went down from high-medium to straight up low.
 
-
 - Added the lazy nightmode, weird graphical glitches around the cardview in the nightmode.
 "app:cardBackgroundColor="@android:color/transparent"" solved this.
 
-- Fully switched to both activties being fragments. ~~The youtube api is still a bitch~~, it now crashes when nightmode activates or when it rotates in the detail activty.
+- Fully switched to both activties being fragments. ~~The youtube api is still a bitch so I temporarily removed it~~, it now crashes when nightmode activates or when it rotates in the detail activty.
 - But at least we have transitions between the fragments. Yeah they don't come with em naturally. #UseYaOwn!
 And yes you need four animations for it to work.
 
 - Without the default constructor for a fragment or it will crash on config change. The detail activity used to crash as it couldn't find information it was calling on which was solved using "onsavedinstance()" and onrestoreinstance()
+
+
+## ChangeLog Summary:
+* Resigned the app: Put both fragments in scrollviews and then set the main activity in a linear layout and changed the size of some things on the splashscreen.
+* Sped up the recycler view.
+* Added hardware acceleration to the main activity.
+* Put the ui into fragments.
+* Added Nightmode.
+* Tidyed up the code a little bit.
+* Temporarily removed the youtube player soon to be replaced with the fragment version.
+
 
 ## Tips:
 - Keep the view-group that onbindviewholder() would be calling to simplified state as complex layouts slow down this function.
@@ -41,6 +51,7 @@ And yes you need four animations for it to work.
 [Mike Scamell's Github](https://github.com/mikescamell/shared-element-transitions)
 
 
+
 **Saved Instance on Config Change**
 
 [Coding Flow](https://codinginflow.com/tutorials/android/restore-variables-on-configuration-change)
@@ -50,11 +61,14 @@ And yes you need four animations for it to work.
 [RetainInstance](https://www.androiddesignpatterns.com/2013/04/retaining-objects-across-config-changes.html)
 
 
+
 **Recyclerview Optimizations**
 
 [Restoring recyclerview positions (though not necessary)](https://stackoverflow.com/questions/36568168/how-to-save-scroll-position-of-recyclerview-in-android/36569778)
 
 [Improving scrolling](https://stackoverflow.com/questions/27188536/recyclerview-scrolling-performance)
+
+
 
 **Fragments**
 
