@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
 
             else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
                 onInfoSent("","", "", "");
+                ft.add(R.id.container, fragmentMain).commit();
             }
         }
     }
