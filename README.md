@@ -1,6 +1,17 @@
 # NBA-Info
 An android application that displays the information and descriptions on a couple NBA teams along with an embedded youtube video.
 
+
+## ChangeLog Summary:
+* Resigned the app: Put both fragments in scrollviews and then set the main activity in a linear layout and changed the size of some things on the splashscreen.
+* Sped up the recycler view.
+* Added hardware acceleration to the main activity.
+* Put the ui into fragments.
+* Added Nightmode.
+* Tidyed up the code a little bit.
+* Temporarily removed the youtube player soon to be replaced with the fragment version.
+
+
 ## Changelog:
 - I did have a line in to stop the scrolling from being glitchy (cutting off content and moving slow) but the fragment implementation fixed that. Cause the Recyclerview didn't like being in a scrollview and would end up cropping the bottle set of items. Somehow fragmentation solved this and dropped cpu usage while scrolling from ~60-65% to a maximum of 27%.
 
@@ -24,16 +35,6 @@ Note: webp's are only supported api 18 and up aka not a problem since the minimu
 And yes you need four animations for it to work.
 
 - Without the default constructor for a fragment or it will crash on config change. The detail activity used to crash as it couldn't find information it was calling on which was solved using "onsavedinstance()" and onrestoreinstance()
-
-
-## ChangeLog Summary:
-* Resigned the app: Put both fragments in scrollviews and then set the main activity in a linear layout and changed the size of some things on the splashscreen.
-* Sped up the recycler view.
-* Added hardware acceleration to the main activity.
-* Put the ui into fragments.
-* Added Nightmode.
-* Tidyed up the code a little bit.
-* Temporarily removed the youtube player soon to be replaced with the fragment version.
 
 
 ## Tips:
@@ -69,6 +70,11 @@ And yes you need four animations for it to work.
 [Restoring recyclerview scroll position (though not necessary)](https://stackoverflow.com/questions/36568168/how-to-save-scroll-position-of-recyclerview-in-android/36569778)
 
 [Improving scrolling](https://stackoverflow.com/questions/27188536/recyclerview-scrolling-performance)
+
+---
+
+**Orientation Changed**
+[Alternate layout](https://www.youtube.com/watch?v=KJGKj078Qag)
 
 ---
 
