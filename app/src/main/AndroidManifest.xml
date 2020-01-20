@@ -25,10 +25,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:configChanges="keyboardHidden|screenSize" />
-        <activity
-            android:name=".DetailsActivity"
-            android:configChanges="keyboardHidden|screenSize"/>
+            android:configChanges="keyboardHidden|screenSize|orientation" />
     </application>
 
 </manifest>

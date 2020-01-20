@@ -36,6 +36,17 @@ And yes you need four animations for it to work.
 
 - Without the default constructor for a fragment or it will crash on config change. The detail activity used to crash as it couldn't find information it was calling on which was solved using "onsavedinstance()" and onrestoreinstance()
 
+Ver 2.500
+- Added orientation to the manifest file so onconfigurationchanged would be called. Cause of this the activity file would not be changed naturally. 
+
+
+
+
+
+
+Other than this orientation switches seems to be fine.
+
+
 
 ## Tips:
 - Keep the view-group that onbindviewholder() would be calling to simplified state as complex layouts slow down this function.

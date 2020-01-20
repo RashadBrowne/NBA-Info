@@ -53,18 +53,21 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RecyclerViewM = inflater.inflate(R.layout.main_fragment,container, false);
-        //Inflate the layout for the fragment, this way we can attach items to views without calling "onViewCreated"
+        if (savedInstanceState == null){
 
-        recyclerView = RecyclerViewM.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            RecyclerViewM = inflater.inflate(R.layout.main_fragment,container, false);
+            //Inflate the layout for the fragment, this way we can attach items to views without calling "onViewCreated"
 
-        initImageBitmaps();
-        recyclerView.setItemViewCacheSize(20);
-        //Keep all the items in cache so it only runs onbindviewholder once instead of when an item is retrieved from offscreen
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls, mImageDesc, mLinks);//Innit the recyclerview
-        recyclerView.setHasFixedSize(true);//Since everything has a standard height
-        recyclerView.setAdapter(adapter);
+            recyclerView = RecyclerViewM.findViewById(R.id.recycler_view);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            initImageBitmaps();
+            recyclerView.setItemViewCacheSize(20);
+            //Keep all the items in cache so it only runs onbindviewholder once instead of when an item is retrieved from offscreen
+            RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls, mImageDesc, mLinks);//Innit the recyclerview
+            recyclerView.setHasFixedSize(true);//Since everything has a standard height
+            recyclerView.setAdapter(adapter);
+        }
         return RecyclerViewM;
     }
 
