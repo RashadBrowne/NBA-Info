@@ -2,7 +2,6 @@ package com.example.nba_info;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.transition.Slide;
 
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
@@ -40,14 +37,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_layout,parent, false);
         ViewHolder holder = new ViewHolder(view);
-        Log.d("hey3", "onCreate: 2");
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Log.d("hey3", "onCreate: 3");
-
         //Load the details on the main page
         Glide.with(mContext).asBitmap().load(mImages.get(position)).into(holder.image);
         holder.imageName.setText(mImageNames.get(position));
@@ -63,7 +57,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        Log.d("hey3", "onCreate: 1" + mImageNames.size());
         return mImageNames.size();
     }
 
@@ -86,7 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if (mContext instanceof MainActivity){
             MainActivity mainActivity = (MainActivity) mContext;
-            mainActivity.onInfoSent(mImages.get(position) , mImageNames.get(position), mDescs.get(position) , mLinks.get(position));
+            mainActivity.StartDetailFrag(mImages.get(position) , mImageNames.get(position), mDescs.get(position) , mLinks.get(position));
         }
     }
 }

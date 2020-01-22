@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class MainFragment extends Fragment {
 
     //Fragment interface
     public interface SendInfoListener {
-        void onInfoSent(String Url, String Name, String Desc, String Link);
+        void StartDetailFrag(String Url, String Name, String Desc, String Link);
     }
 
     @Override
@@ -128,6 +127,5 @@ public class MainFragment extends Fragment {
         mNames.add("Rockets");
         mImageDesc.add("The Houston Rockets are an American professional basketball team based in Houston, Texas. The Rockets compete in the National Basketball Association (NBA) as a member of the league's Western Conference Southwest Division. The team plays its home games at the Toyota Center, located in downtown Houston. The Rockets have won two NBA championships and four Western Conference titles. The team was established in 1967 as the San Diego Rockets, an expansion team originally based in San Diego. In 1971, the Rockets moved to Houston.");
         mLinks.add("N6qj1qakVN4");
-        Log.d("hey", "onCreate: 5");
     }
 }

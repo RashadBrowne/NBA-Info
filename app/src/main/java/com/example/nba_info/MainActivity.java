@@ -5,13 +5,13 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.transition.Slide;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 
 
 public class MainActivity extends AppCompatActivity implements MainFragment.SendInfoListener {
     private MainFragment fragmentMain;
     private DetailFragment fragmentDetail;
+    private String Orientation = "?";
 
 
     //Make me a class
@@ -26,74 +26,76 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {//Don't reset if the activity already started
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            fragmentMain = new MainFragment();//Innit the fragment
-            fragmentMain.setExitTransition(new Slide(Gravity.LEFT));
-            fragmentMain.setEnterTransition(new Slide(Gravity.RIGHT));
+            StartMainFrag();
 
             if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-                ft.add(R.id.container, fragmentMain).commit();
-                //Swap it into the FrameLayout with the id container
+                Orientation = "P";
             }
 
             else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-                onInfoSent("","", "", "");
-                ft.add(R.id.container, fragmentMain).commit();
+                Orientation = "L";
+                StartDetailFrag(tUrl, tName, tDesc, tLink);
             }
-            //savedInstanceState.putString("app_launch","duh");//Just so night mode doesnt remove the fragment on first launch
+            //Just so night mode doesnt remove the fragment on first launch
+        }
+        else {
+            //CheckOrientation();
         }
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+    public void CheckOrientation() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            if (Orientation.equals("L")){return;}
             setContentView(R.layout.activity_land);
-            FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
-            fragmentMain = new MainFragment();//Innit the fragment
-            fragmentMain.setExitTransition(new Slide(Gravity.LEFT));
-            fragmentMain.setEnterTransition(new Slide(Gravity.RIGHT));
-            ft2.add(R.id.container, fragmentMain).commit();
-            onInfoSent(tUrl, tName, tDesc, tLink);
+            StartMainFrag();
+            StartDetailFrag(tUrl, tName, tDesc, tLink);
+            Orientation = "L";
 
         }
 
-        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            if (Orientation.equals("P")){return;}
             setContentView(R.layout.activity_main);
             if (getSupportFragmentManager().findFragmentById(R.id.container2) != null) {
-                if (tUrl.equals("")){/*
-                    FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
-                    fragmentMain = new MainFragment();//Innit the fragment
-                    fragmentMain.setExitTransition(new Slide(Gravity.LEFT));
-                    fragmentMain.setEnterTransition(new Slide(Gravity.RIGHT));
-                    ft2.add(R.id.container, fragmentMain).commit();*/
+                if (tUrl.equals("")){
+                    StartMainFrag();
                 }
                 else{
-                    onInfoSent(tUrl, tName, tDesc, tLink);
+                    StartDetailFrag(tUrl, tName, tDesc, tLink);
                 }
                 getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.container2));
             }
+            Orientation = "P";
         }
     }
 
+
+    public void StartMainFrag(){
+        FragmentTransaction mainFrag = getSupportFragmentManager().beginTransaction();
+        fragmentMain = new MainFragment();//Innit the fragment
+        fragmentMain.setExitTransition(new Slide(Gravity.LEFT));
+        fragmentMain.setEnterTransition(new Slide(Gravity.RIGHT));
+        mainFrag.add(R.id.container, fragmentMain).commit();
+        //Swap it into the FrameLayout with the id container
+    }
+
     @Override
-    public void onInfoSent(String Url, String Name, String Desc, String Link) {
-        tUrl = Url;   tName = Name;   tDesc = Desc;   tLink = Link;//Set temp variables for switching
+    public void StartDetailFrag(String Url, String Name, String Desc, String Link) {
+        tUrl = Url;   tName = Name;   tDesc = Desc;   tLink = Link;//Set temp variables for switching orientations
+        fragmentDetail= new DetailFragment(Url , Name, Desc, Link);
 
-        fragmentDetail= new DetailFragment(Url , Name, Desc, Link);//Innit the fragment
-        fragmentDetail.setExitTransition(new Slide(Gravity.LEFT));
-        fragmentDetail.setEnterTransition(new Slide(Gravity.RIGHT));
-
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+        // .if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            fragmentDetail.setExitTransition(new Slide(Gravity.LEFT));
+            fragmentDetail.setEnterTransition(new Slide(Gravity.RIGHT));
             ft.replace(R.id.container, fragmentDetail).addToBackStack(null).commit();
-        }
+        //}
 
-        else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+       /* else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            fragmentDetail.setExitTransition(new Slide(Gravity.BOTTOM));
+            fragmentDetail.setEnterTransition(new Slide(Gravity.TOP));
             ft.replace(R.id.container2, fragmentDetail).commit();
-        }
+        }*/
     }
 }
