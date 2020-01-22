@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (savedInstanceState == null){
+       // if (savedInstanceState == null){
 
             RecyclerViewM = inflater.inflate(R.layout.main_fragment,container, false);
             //Inflate the layout for the fragment, this way we can attach items to views without calling "onViewCreated"
@@ -66,7 +66,7 @@ public class MainFragment extends Fragment {
             RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), mNames, mImageUrls, mImageDesc, mLinks);//Innit the recyclerview
             recyclerView.setHasFixedSize(true);//Since everything has a standard height
             recyclerView.setAdapter(adapter);
-        }
+        //}
         return RecyclerViewM;
     }
 

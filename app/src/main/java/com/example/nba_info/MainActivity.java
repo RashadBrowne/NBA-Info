@@ -43,7 +43,10 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
         }
     }
 
-    public void CheckOrientation() {
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             if (Orientation.equals("L")){return;}
             setContentView(R.layout.activity_land);
@@ -84,18 +87,18 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
         tUrl = Url;   tName = Name;   tDesc = Desc;   tLink = Link;//Set temp variables for switching orientations
         fragmentDetail= new DetailFragment(Url , Name, Desc, Link);
 
-        // .if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             fragmentDetail.setExitTransition(new Slide(Gravity.LEFT));
             fragmentDetail.setEnterTransition(new Slide(Gravity.RIGHT));
             ft.replace(R.id.container, fragmentDetail).addToBackStack(null).commit();
-        //}
+        }
 
-       /* else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+       else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             fragmentDetail.setExitTransition(new Slide(Gravity.BOTTOM));
             fragmentDetail.setEnterTransition(new Slide(Gravity.TOP));
             ft.replace(R.id.container2, fragmentDetail).commit();
-        }*/
+        }
     }
 }
