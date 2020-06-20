@@ -19,10 +19,10 @@ public class DetailFragment extends Fragment {
     YouTubePlayerView Vidview;
     YouTubePlayer.OnInitializedListener listener;
 
-    String ImageUrl;
-    String Name;
-    String Desc;
-    String Link;
+    static String ImageUrl;
+    static String Name;
+    static String Desc;
+    static String Link;
 
     public DetailFragment(){
         //Needed for resettting the fragment on a configuration change

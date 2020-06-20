@@ -39,7 +39,8 @@ And yes you need four animations for it to work.
 Ver 2.500
 - Added orientation to the manifest file so onconfigurationchanged would be called. Cause of this the activity file would not be changed naturally. 
 
-
+Ver 2.600
+- Now the app keeps the info even when orientation and night mode is changed at the same time.
 
 
 
@@ -56,6 +57,8 @@ Other than this orientation switches seems to be fine.
 - Fragment xml thingy crashes the app. Use FrameLayout instead.
 
 - I can pass everything to a fragment on the start in the same way as a class though not recommended.
+
+- Keep important variables loaded using static. Static variables stay loaded as long as the activity is open.
 
 ## Sources:
 **Shared Element Transisions**
@@ -85,18 +88,23 @@ Other than this orientation switches seems to be fine.
 ---
 
 **Orientation Changed**
+
 [Alternate layout](https://www.youtube.com/watch?v=KJGKj078Qag)
+[The reason why it gets reset](https://stackoverflow.com/questions/9755354/loss-of-variables-switching-orientations)
+[Activity lifecycle](https://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle)
 
 ---
 
 **Fragments**
+[SetRetainInstance](https://stackoverflow.com/questions/11182180/understanding-fragments-setretaininstanceboolean)
 
 ---
 
-**Fragment Interfaces**  
+**Fragment Interfaces** 
 
 ---
 
 **Misc**
 
 [Cardview Glitch](https://stackoverflow.com/questions/56747314/cardview-corneredges-display-with-dark-color-how-to-resolve-this/56747390#56747390)
+[Night Mode](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme)

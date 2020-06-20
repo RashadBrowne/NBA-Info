@@ -1,10 +1,12 @@
 package com.example.nba_info;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.transition.Slide;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.Gravity;
 
 
@@ -15,10 +17,10 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
 
 
     //Make me a class
-    String tUrl ="";
-    String tName = "";
-    String tDesc = "";
-    String tLink = "";
+    static String tUrl ="";
+    static String tName = "";
+    static String tDesc = "";
+    static String tLink = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
                 StartDetailFrag(tUrl, tName, tDesc, tLink);
             }
             //Just so night mode doesnt remove the fragment on first launch
-        }
-        else {
-            //CheckOrientation();
         }
     }
 
@@ -72,6 +71,30 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Send
         }
     }
 
+    //Saving the data on config change
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {//Save variables before resetting
+            savedInstanceState.putString("Url", tUrl);
+            savedInstanceState.putString("Name", tName);
+            savedInstanceState.putString("Desc", tDesc);
+            savedInstanceState.putString("Link", tLink);
+            savedInstanceState.putString("Orientation", Orientation);
+        }
+    }
+
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        if (savedInstanceState != null) {//Get variables
+            tUrl = savedInstanceState.getString("Url");
+            tName = savedInstanceState.getString("Name");
+            tDesc = savedInstanceState.getString("Desc");
+            tLink = savedInstanceState.getString("Link");
+            Orientation = savedInstanceState.getString("Orientation");
+        }
+    }
 
     public void StartMainFrag(){
         FragmentTransaction mainFrag = getSupportFragmentManager().beginTransaction();
